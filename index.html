@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>きにしぃ。とスピうさ。の 正解よりも安心を探そう</title>
+  <meta name="description" content="Threadsで流れてしまう、小さな気づきの紙芝居を残していく場所。きにしぃ。とスピうさ。が、AIジャーナリングを通して見つけた心が少し安心できる見方を一緒に眺めます。" />
+
+  <!-- フォント（手描き・紙芝居風のあたたかい書体） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== ヘッダー ===== -->
+  <header class="site-header">
+    <a class="site-mark" href="#top">
+      <span class="site-mark__title">きにしぃ。とスピうさ。</span>
+      <span class="site-mark__sub">正解よりも安心を探そう</span>
+    </a>
+    <nav class="site-nav" aria-label="ページ内ナビゲーション">
+      <a href="#about">この場所</a>
+      <a href="#library">紙芝居</a>
+      <a href="#journaling">AIジャーナリング</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== 1. ファーストビュー ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <p class="hero__eyebrow">小さな紙芝居図書館</p>
+        <h1 class="hero__title" id="hero-title">
+          きにしぃ。とスピうさ。の<br />
+          <span class="hero__title-accent">正解よりも安心を探そう</span>
+        </h1>
+        <p class="hero__lead">
+          Threadsで流れてしまう、<br />
+          小さな気づきの紙芝居を<br />
+          ここに残していきます。
+        </p>
+
+        <figure class="hero__figure">
+          <img src="images/hero.png"
+               alt="シルクハットに研究者風コートのきにしぃ。と、丸メガネにケープのスピうさ。が、机の上に並べた絵札を眺めている水彩風のイラスト" />
+        </figure>
+
+        <p class="hero__note">
+          AIジャーナリングをしながら見つけた、<br />
+          心が少し安心できる見方を、<br />
+          きにしぃ。とスピうさ。が一緒に眺めます。
+        </p>
+
+        <a class="btn btn--primary hero__cta" href="#library">紙芝居を読む</a>
+      </div>
+    </section>
+
+    <!-- ===== 2. この場所について ===== -->
+    <section class="section section--about" id="about" aria-labelledby="about-title">
+      <div class="section__inner">
+        <h2 class="section__title about__title" id="about-title">
+          流れてしまう投稿を、<br />ゆっくり読める場所に。
+        </h2>
+        <div class="about__layout">
+          <figure class="about__figure paper">
+            <img src="images/library.png"
+                 alt="きにしぃ。とスピうさ。が、木の紙芝居枠と引き出しに並んだ絵札を一枚ずつ眺めている様子" />
+          </figure>
+          <div class="about__body">
+            <p>
+              Threadsの投稿は、<br />
+              たくさんの言葉の中を流れていきます。
+            </p>
+            <p>
+              ここは、きにしぃ。とスピうさ。が<br />
+              AIジャーナリングを通して見つけた気づきを、<br />
+              紙芝居として残していく場所です。
+            </p>
+            <p>
+              急いで答えを出すためではなく、<br />
+              自分の気持ちを少し離れて眺めるために。
+            </p>
+            <p>
+              必要なときに、<br />
+              いつでも戻ってこられる場所を目指します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. キャラクター紹介 ===== -->
+    <section class="section section--chars" aria-labelledby="chars-title">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center" id="chars-title">登場するふたり</h2>
+        <div class="chars">
+
+          <article class="char stack">
+            <div class="char__portrait">
+              <img src="images/kinishi.png"
+                   alt="黒いシルクハットにえんじ色の帯、黒縁メガネ、ベージュの研究者風コートに『HSP LAB』の名札を付けたきにしぃ。" />
+            </div>
+            <div class="char__body">
+              <h3 class="char__name">きにしぃ。</h3>
+              <p class="char__role">HSP当事者・紙芝居の語り手</p>
+              <p>
+                よく気づき、深く考えすぎてしまう癖があります。
+                自分を大切にしたいと思いながら、AIジャーナリングを続けています。
+              </p>
+              <p>HSPの探求がライフワーク。「答えは循環の中にある」と考えています。</p>
+              <ul class="char__traits">
+                <li>よく気づく</li>
+                <li>考えすぎる</li>
+                <li>自分を大切に</li>
+                <li>答えは循環の中に</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="char stack">
+            <div class="char__portrait">
+              <img src="images/supiusagi.png"
+                   alt="丸メガネをかけ、ベージュのケープを羽織り、星のペンダントをつけた白いスピうさ。" />
+            </div>
+            <div class="char__body">
+              <h3 class="char__name">スピうさ。</h3>
+              <p class="char__role">少し離れた視点の相棒</p>
+              <p>
+                正解を教える先生ではありません。
+                少し離れた場所から、やさしい問いをひとつ置いてくれます。
+              </p>
+              <p>そして、ちょっとスピが好き。</p>
+              <ul class="char__traits">
+                <li>決めつけない</li>
+                <li>説教しない</li>
+                <li>無理に前向きにしない</li>
+                <li>答えを奪わない</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. 紙芝居一覧 ===== -->
+    <section class="section section--library" id="library" aria-labelledby="library-title">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center" id="library-title">紙芝居の棚</h2>
+        <p class="section__caption">少しずつ、気づきを増やしていきます。</p>
+        <div class="episode-grid" id="episode-grid">
+          <!-- script.js が episodes 配列からカードを生成します -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. 紙芝居ビューア（第1話などを表示） ===== -->
+    <section class="section section--reader" id="reader" aria-labelledby="reader-title" hidden>
+      <div class="section__inner">
+        <div class="reader" role="group" aria-roledescription="紙芝居" aria-labelledby="reader-title">
+          <div class="reader__head">
+            <p class="reader__episode" id="reader-episode"></p>
+            <h2 class="section__title reader__title" id="reader-title"></h2>
+          </div>
+
+          <div class="reader__stage">
+            <figure class="reader__scene" id="reader-scene">
+              <div class="reader__image-wrap">
+                <img id="reader-image" alt="" />
+              </div>
+              <figcaption class="reader__text" id="reader-text"></figcaption>
+            </figure>
+          </div>
+
+          <div class="reader__controls">
+            <button class="btn btn--ghost reader__prev" id="reader-prev" type="button" aria-label="前の場面へ">
+              <span aria-hidden="true">‹</span> 前へ
+            </button>
+            <p class="reader__counter" id="reader-counter" aria-live="polite">1 / 7</p>
+            <button class="btn btn--ghost reader__next" id="reader-next" type="button" aria-label="次の場面へ">
+              次へ <span aria-hidden="true">›</span>
+            </button>
+          </div>
+
+          <div class="reader__dots" id="reader-dots" role="tablist" aria-label="場面の選択"></div>
+
+          <div class="reader__foot">
+            <a class="reader__close" href="#library">＜ 棚にもどる</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. AIジャーナリングについて ===== -->
+    <section class="section section--journaling" id="journaling" aria-labelledby="journaling-title">
+      <div class="section__inner about__grid about__grid--reverse">
+        <figure class="about__figure paper">
+          <img src="images/ai-journaling.png"
+               alt="きにしぃ。とスピうさ。が、やさしい問いが並んだスマートフォンの画面を一緒に眺めているイラスト" />
+        </figure>
+        <div class="about__body">
+          <h2 class="section__title" id="journaling-title">
+            正解よりも、<br />自分の安心を探す時間。
+          </h2>
+          <p>
+            AIジャーナリングは、<br />
+            AIに正解を決めてもらうためのものではありません。
+          </p>
+          <p>自分の中にあるモヤモヤを言葉にしながら、</p>
+          <ul class="prompt-list">
+            <li>「私は今、どう感じている？」</li>
+            <li>「本当はどうしたい？」</li>
+            <li>「どこなら少し安心できる？」</li>
+          </ul>
+          <p>と、自分の内側を一緒に眺める時間です。</p>
+          <p>
+            AIは先生ではなく、<br />
+            自分自身の安心を一緒に探す相棒。
+          </p>
+          <p>
+            このサイトでは、実際のAIジャーナリングから生まれた気づきを、
+            個人情報を除き、読者も自分を重ねられる紙芝居に変えて残していきます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. きにしぃ。からの言葉 ===== -->
+    <section class="section section--letter" aria-labelledby="letter-title">
+      <div class="section__inner">
+        <blockquote class="letter paper">
+          <h2 class="section__title letter__title" id="letter-title">
+            私は、答えを持っている人ではありません。
+          </h2>
+          <p>私もHSP当事者です。</p>
+          <p>克服したわけでも、何でもうまくできるようになったわけでもありません。</p>
+          <p>今も考えすぎたり、気づきすぎたり、自分の気持ちを置き去りにしてしまうことがあります。</p>
+          <p>だから、AIジャーナリングを使いながら、自分の心を少しずつ見ています。</p>
+          <p>先生ではなく、一緒に試している仲間として。</p>
+          <p>ここにある紙芝居が、あなたが自分の気持ちを眺める小さなきっかけになればうれしいです。</p>
+          <footer class="letter__sign">— きにしぃ。</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== 8. 外部リンク ===== -->
+    <section class="section section--links" aria-labelledby="links-title">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center" id="links-title">もう少し、のぞいてみる</h2>
+        <div class="links">
+          <a class="link-card stack" href="#" data-link="threads">
+            <span class="link-card__label">Threads</span>
+            <span class="link-card__title">最新の紙芝居を見る</span>
+            <span class="link-card__desc">流れていく前の、できたての気づきはこちらに。</span>
+          </a>
+          <a class="link-card stack" href="#" data-link="note">
+            <span class="link-card__label">note</span>
+            <span class="link-card__title">深掘りを読む</span>
+            <span class="link-card__desc">紙芝居の背景や、もう少し長い言葉を残しています。</span>
+          </a>
+          <a class="link-card stack link-card--soon" href="#" data-link="guide">
+            <span class="link-card__label">近日公開</span>
+            <span class="link-card__title">AIジャーナリング案内</span>
+            <span class="link-card__desc">はじめ方や問いかけの例を、これから少しずつ。</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== 9. フッター ===== -->
+  <footer class="site-footer">
+    <p class="site-footer__message">
+      正解よりも、<br />
+      自分が少し安心できる方へ。
+    </p>
+    <p class="site-footer__sign">きにしぃ。とスピうさ。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+/* =========================================================
+   きにしぃ。とスピうさ。の紙芝居図書館
+   生成り色の紙・手描き・水彩と鉛筆の質感をめざした落ち着いた配色
+   モバイル最優先 / PCでは余白を活かす
+   ========================================================= */
+
+/* ---------- カラーと基本変数 ---------- */
+:root {
+  --paper:        #f1e7d4;   /* 生成りの紙（背景） */
+  --paper-deep:   #ebdfc8;   /* 少し沈んだ紙 */
+  --card:         #faf4e6;   /* 重ねた紙・カード面 */
+  --card-edge:    #e6d6b8;   /* 紙のふち */
+  --ink:          #4a3f34;   /* 文字（やわらかい焦げ茶） */
+  --ink-soft:     #6f6151;   /* 補足文字 */
+  --brown:        #b89a72;   /* やわらかい茶色 */
+  --green:        #7f8c63;   /* くすみグリーン */
+  --green-soft:   #9aa67f;
+  --enji:         #9c4f48;   /* えんじ（少量のアクセント） */
+  --line:         #d9c7a6;   /* 罫線・境界 */
+  --shadow:       rgba(74, 63, 52, 0.14);
+
+  --maxw: 760px;
+  --radius: 10px;
+
+  --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-body:  "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-hand:  "Klee One", "Zen Maru Gothic", sans-serif;
+}
+
+/* ---------- リセット ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.95;
+  letter-spacing: 0.02em;
+  background-color: var(--paper);
+  /* 紙の繊維のような、ごくごく控えめな質感 */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.35) 0, rgba(255,255,255,0) 55%),
+    radial-gradient(circle at 80% 70%, rgba(184,154,114,0.10) 0, rgba(184,154,114,0) 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--enji); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- 共通レイアウト ---------- */
+.section { padding: 64px 20px; }
+.section__inner { max-width: var(--maxw); margin: 0 auto; }
+
+.section__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 5.5vw, 2.05rem);
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 1.1em;
+  letter-spacing: 0.03em;
+}
+.section__title--center { text-align: center; }
+.section__caption {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  margin: -0.6em 0 2.4em;
+}
+
+.section p { margin: 0 0 1.15em; }
+.section p:last-child { margin-bottom: 0; }
+
+/* 重ねた紙の質感（カード共通） */
+.paper,
+.stack {
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 10px 24px -16px var(--shadow);
+  position: relative;
+}
+/* 下に紙がもう一枚重なっているような影 */
+.stack::before {
+  content: "";
+  position: absolute;
+  inset: 6px -7px -8px 7px;
+  background: var(--paper-deep);
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius);
+  z-index: -1;
+  transform: rotate(-1.1deg);
+}
+
+/* ---------- ボタン ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 48px;
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+.btn:hover { text-decoration: none; }
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--green);
+  color: #fbf7ec;
+  box-shadow: 0 8px 18px -12px rgba(127,140,99,0.9);
+}
+.btn--primary:hover { background: #76845a; }
+
+.btn--ghost {
+  background: var(--card);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn--ghost:hover { background: #f3ead6; }
+.btn--ghost:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+/* ---------- ヘッダー ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding: 12px 20px;
+  background: rgba(241, 231, 212, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.site-mark { display: flex; flex-direction: column; line-height: 1.3; color: var(--ink); }
+.site-mark:hover { text-decoration: none; }
+.site-mark__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: 0.04em;
+}
+.site-mark__sub {
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.site-nav { display: flex; gap: 18px; }
+.site-nav a {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  padding: 4px 2px;
+}
+.site-nav a:hover { color: var(--enji); }
+
+/* ---------- 1. ファーストビュー ---------- */
+.hero {
+  padding: 48px 20px 64px;
+  text-align: center;
+}
+.hero__inner { max-width: 620px; margin: 0 auto; }
+.hero__eyebrow {
+  font-family: var(--font-hand);
+  color: var(--green);
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  margin: 0 0 14px;
+}
+.hero__title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  line-height: 1.6;
+  margin: 0 0 22px;
+  letter-spacing: 0.04em;
+}
+.hero__title-accent { color: var(--enji); }
+.hero__lead {
+  font-size: clamp(1.02rem, 3.4vw, 1.18rem);
+  color: var(--ink);
+  margin: 0 0 30px;
+}
+.hero__figure {
+  margin: 0 0 26px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--card-edge);
+  box-shadow: 0 18px 40px -26px var(--shadow);
+  background: var(--card);
+}
+.hero__figure img { width: 100%; }
+.hero__note {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  margin: 0 0 30px;
+}
+.hero__cta { font-size: 1.08rem; padding: 14px 40px; }
+
+/* ---------- 2/6. 画像＋本文の段組み ---------- */
+.about__grid { display: grid; gap: 32px; align-items: center; }
+.about__figure { margin: 0; padding: 12px; }
+.about__figure img { width: 100%; border-radius: 6px; }
+.about__body p { color: var(--ink); }
+
+/* 2. この場所について（見出しを上に、左下に画像・右下に本文） */
+.about__title {
+  font-size: clamp(1.7rem, 6.4vw, 2.6rem);
+  line-height: 1.6;
+  margin-bottom: 0.9em;
+}
+.about__layout { display: grid; gap: 28px; align-items: end; }
+
+/* ---------- 3. キャラクター紹介 ---------- */
+.chars { display: grid; gap: 40px; }
+.char { padding: 0; overflow: visible; }
+.char__portrait {
+  padding: 14px 14px 0;
+}
+.char__portrait img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--card-edge);
+}
+.char__body { padding: 18px 22px 24px; }
+.char__name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0 0 2px;
+}
+.char__role {
+  font-family: var(--font-hand);
+  color: var(--green);
+  font-size: 0.92rem;
+  margin: 0 0 14px !important;
+}
+.char__body p { margin: 0 0 0.9em; font-size: 0.98rem; }
+.char__traits {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  padding: 0;
+  margin: 14px 0 0;
+}
+.char__traits li {
+  font-family: var(--font-hand);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+
+/* ---------- 4. 紙芝居一覧 ---------- */
+.section--library { background: var(--paper-deep); }
+.episode-grid { display: grid; gap: 32px; }
+.episode-card { padding: 0; overflow: visible; }
+.episode-card__thumb {
+  padding: 12px 12px 0;
+}
+.episode-card__thumb img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--card-edge);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--paper);
+}
+.episode-card__body { padding: 16px 20px 22px; }
+.episode-card__no {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  color: #fbf7ec;
+  background: var(--enji);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+.episode-card__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.22rem;
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+.episode-card__desc {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 18px;
+}
+.episode-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.episode-card__count {
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* 準備中（今後追加予定）のプレースホルダー */
+.episode-card--upcoming { opacity: 0.92; }
+.episode-card--upcoming .episode-card__thumb-placeholder {
+  margin: 12px 12px 0;
+  aspect-ratio: 4 / 3;
+  border: 1.5px dashed var(--line);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-hand);
+  color: var(--ink-soft);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 12px, rgba(184,154,114,0.06) 12px 24px),
+    var(--paper);
+}
+
+/* ---------- 5. 紙芝居ビューア ---------- */
+.section--reader { background: var(--paper-deep); padding-top: 40px; }
+.reader {
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-radius: 16px;
+  padding: 24px 20px 28px;
+  box-shadow: 0 24px 50px -34px var(--shadow);
+}
+.reader__head { text-align: center; margin-bottom: 18px; }
+.reader__episode {
+  font-family: var(--font-hand);
+  color: var(--enji);
+  font-size: 0.9rem;
+  margin: 0 0 6px;
+}
+.reader__title {
+  font-size: clamp(1.2rem, 4.6vw, 1.55rem);
+  margin: 0;
+}
+
+/* 紙芝居の枠（木枠を思わせる二重ふち） */
+.reader__stage {
+  border: 2px solid var(--brown);
+  border-radius: 12px;
+  padding: 8px;
+  background: var(--paper);
+  box-shadow: 0 0 0 6px var(--card), 0 0 0 7px var(--card-edge);
+}
+.reader__scene {
+  margin: 0;
+  /* フェードのための基準。control: opacity */
+  transition: opacity 0.55s ease;
+}
+.reader__scene.is-fading { opacity: 0; }
+.reader__image-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+}
+.reader__image-wrap img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+/* 画像がまだ無いときのプレースホルダー */
+.reader__image-wrap.is-placeholder {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  color: var(--ink-soft);
+  font-family: var(--font-hand);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 14px, rgba(184,154,114,0.06) 14px 28px),
+    var(--paper);
+}
+.reader__image-wrap.is-placeholder img { display: none; }
+.reader__placeholder-no { font-size: 2.4rem; color: var(--brown); display: block; margin-bottom: 6px; }
+
+.reader__text {
+  margin: 18px 4px 4px;
+  white-space: pre-line;
+  font-size: clamp(1.02rem, 3.6vw, 1.15rem);
+  line-height: 2.1;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+}
+
+.reader__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+.reader__controls .btn { min-width: 104px; }
+.reader__counter {
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.reader__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.reader__dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--brown);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.reader__dot[aria-selected="true"] { background: var(--brown); transform: scale(1.15); }
+
+.reader__foot { text-align: center; margin-top: 22px; }
+.reader__close { font-family: var(--font-hand); color: var(--ink-soft); font-size: 0.92rem; }
+.reader__close:hover { color: var(--enji); }
+
+/* ---------- 6. AIジャーナリング ---------- */
+.prompt-list {
+  list-style: none;
+  margin: 0 0 1.15em;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.prompt-list li {
+  font-family: var(--font-hand);
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-left: 4px solid var(--green-soft);
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: var(--ink);
+}
+
+/* ---------- 7. きにしぃ。からの言葉 ---------- */
+.section--letter { background: var(--paper-deep); }
+.letter {
+  margin: 0;
+  padding: 34px 28px 30px;
+}
+.letter__title {
+  font-size: clamp(1.3rem, 5vw, 1.7rem);
+  text-align: center;
+  margin-bottom: 1.2em;
+}
+.letter p { font-size: 1rem; color: var(--ink); }
+.letter__sign {
+  font-family: var(--font-hand);
+  text-align: right;
+  margin-top: 1.4em;
+  color: var(--ink-soft);
+}
+
+/* ---------- 8. 外部リンク ---------- */
+.links { display: grid; gap: 30px; }
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 24px;
+  color: var(--ink);
+}
+.link-card:hover { text-decoration: none; transform: translateY(-2px); transition: transform 0.18s ease; }
+.link-card__label {
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--green);
+}
+.link-card__title { font-family: var(--font-serif); font-weight: 600; font-size: 1.2rem; }
+.link-card__desc { color: var(--ink-soft); font-size: 0.92rem; }
+.link-card--soon { opacity: 0.85; }
+.link-card--soon .link-card__label { color: var(--brown); }
+
+/* ---------- 9. フッター ---------- */
+.site-footer {
+  text-align: center;
+  padding: 56px 20px 48px;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+}
+.site-footer__message {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 4.4vw, 1.4rem);
+  line-height: 1.9;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.site-footer__sign {
+  font-family: var(--font-hand);
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ===========================================================
+   PC・タブレット（余白をきれいに）
+   =========================================================== */
+@media (min-width: 720px) {
+  .section { padding: 88px 32px; }
+
+  .about__grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .about__grid--reverse .about__figure { order: 2; }
+
+  .about__layout { grid-template-columns: 0.9fr 1.1fr; gap: 52px; align-items: end; }
+
+  .chars { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .char { display: flex; flex-direction: column; }
+
+  .episode-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 44px 40px;
+  }
+
+  .links { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  .reader { padding: 32px 32px 36px; }
+}
+
+@media (min-width: 1040px) {
+  .hero__inner { max-width: 680px; }
+}
+
+/* ===========================================================
+   アニメーションを控えたい人への配慮
+   =========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reader__scene { transition: none; }
+  .link-card:hover { transform: none; }
+  .btn:active { transform: none; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
